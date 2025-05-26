@@ -1,7 +1,11 @@
 # daily-grind
 
-DailyGrind is a robust, dependable digital journal crafted to secure
-your thoughts and experiences. Built for clarity and performance, it
-          empowers you to record your life with assurance. Prioritizing privacy
-          and a clean interface, DailyGrind guarantees your journaling remains
-          private, protected, and purposeful.
+> [!NOTE]
+> STILL UNDER DEVELOPMENT
+
+DayBook is a **secure, no-frills journaling app** built with the MERN stack. Users can **log in, write, view, and manage daily entries** with a clean, private interface. Designed for simplicity and security, DayBook keeps your thoughts protected and organized.
+
+### Tools used
+- `ReactJS` `TailwindCSS` `DaisyUI`
+- `NodeJS` `ExpressJS` `MongoDB`
+- `JWT` `Redux Toolkit`
