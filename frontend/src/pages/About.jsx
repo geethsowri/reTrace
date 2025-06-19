@@ -4,11 +4,11 @@ const About = () => {
       <div className="w-full max-w-3xl bg-base-200 shadow-xl hover:shadow-2xl rounded-3xl p-6 md:p-8">
         <h1 className="text-3xl font-bold text-center mb-7">About reTrace</h1>
         <p className="text-lg text-center mb-4">
-          reTrace is a secure and trusted digital journal that protects your
-          thoughts and memories. Built for simplicity and reliability, it allows
-          you to document your experiences with ease. reTrace prioritizes
-          privacy and a distraction-free experience, ensuring your journaling
-          stays personal, secure, and meaningful.
+          reTrace is your personal stronghold for thoughts and memories.
+          Designed with a focus on privacy and performance, it delivers a clean,
+          distraction-free journaling experience. Built for those who value
+          security and clarity, reTrace keeps your story locked, simple, and
+          powerful.
         </p>
 
         <div className="divider"></div>
@@ -18,15 +18,15 @@ const About = () => {
           <li className="flex items-start gap-2">
             <span>✅</span>
             <span>
-              <strong>Write & Manage Entries:</strong> Effortlessly create,
-              edit, and delete reTrace entries while keeping them safe.
+              <strong>Command Your Journal:</strong> Instantly create, edit, or
+              erase entries with total control — all while keeping them secure.
             </span>
           </li>
           <li className="flex items-start gap-2">
             <span>📅</span>
             <span>
-              <strong>Track Your Memories:</strong> Capture experiences from any
-              date, ensuring your journey is well-documented.
+              <strong>Track Your Journey:</strong> Log moments from any day,
+              building a clear, lasting record of your life.
             </span>
           </li>
           <li className="flex items-start gap-2">

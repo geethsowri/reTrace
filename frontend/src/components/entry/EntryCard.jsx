@@ -41,7 +41,7 @@ const EntryCard = ({
   };
 
   return (
-    <div className="card bg-base-200 w-100 h-70 shadow-xl hover:shadow-2xl rounded-3xl">
+    <div className="card bg-base-200 w-100 h-70 shadow-xl hover:shadow-2xl rounded-3xl p-3">
       <div className="flex justify-between items-center pt-4 px-3">
         <p className="text-sm">{formattedDate}</p>
         <div className="flex gap-2">

@@ -24,7 +24,6 @@ const ReadMore = ({
           <div className="block text-center card-title pb-2">
             <span>{mood} </span>
             <span>{title} </span>
-            <span>{mood} </span>
           </div>
 
           <div className="text-left text-sm p-2 pb-1">

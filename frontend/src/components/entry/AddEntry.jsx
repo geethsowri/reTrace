@@ -48,7 +48,7 @@ const AddEntry = () => {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="btn btn-circle w-16 h-16 bg-primary text-white hover:scale-105 animate-bounce hover:cursor-pointer"
+        className="btn btn-circle w-16 h-16 bg-primary text-white hover:scale-105 hover:cursor-pointer"
       >
         <FaPlus className="text-3xl" />
       </button>

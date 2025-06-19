@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { FaChevronDown, FaUser, FaSignOutAlt, FaLock } from "react-icons/fa";
+import { CircleUserRound, LogOut, LockKeyhole, ChevronDown } from "lucide-react";
 import ModalLayout from "../ModalLayout";
 import { useState } from "react";
 import Profile from "../auth/Profiles";
@@ -26,26 +26,26 @@ const NavProfile = () => {
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-primary">
             {user.data.firstName}
-            <FaChevronDown />
+            <ChevronDown size={20} />
           </div>
           <ul className="menu dropdown-content bg-base-200 rounded-box z-1 mt-3 w-52 p-2 shadow">
             <li onClick={handleDropDownClick}>
               <button onClick={() => setOpenProfile(true)}>
-                <FaUser />
+                <CircleUserRound size={20} />
                 Profile
               </button>
             </li>
             <div className="divider m-0"></div>
             <li onClick={handleDropDownClick}>
               <button onClick={() => setOpenPassword(true)}>
-                <FaLock />
+                <LockKeyhole size={20} />
                 Change Password
               </button>
             </li>
             <div className="divider my-0"></div>
             <li onClick={handleDropDownClick}>
               <button onClick={() => setOpenLogout(true)}>
-                <FaSignOutAlt />
+                <LogOut size={20} />
                 Log out
               </button>
             </li>

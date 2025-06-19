@@ -43,12 +43,12 @@ const Entries = () => {
       return (
         <div className="text-center mt-10 mx-7 min-h-[calc(100dvh-64px-52px-40px)]">
           <p className="text-2xl font-semibold mb-2">
-            Sorry {user.data.firstName}, I couldn't find any entries matching
-            your search query!
+            No luck, {user.data.firstName}. Couldn’t find any entries that match
+            your search. Try tweaking your query.
           </p>
           <p className="text-lg">
-            It looks like there are no entries that match your search criteria.
-            Try searching with different keywords!
+            No matching entries found. Try different keywords and take another
+            shot.
           </p>
           <div className="fixed bottom-20 z-10 left-[calc(100vw-7rem)]">
             <AddEntry />
@@ -62,11 +62,10 @@ const Entries = () => {
             Welcome, {user.data.firstName}
           </p>
           <p className="text-lg mb-2">
-            It looks like you haven't added any entries yet.
+           Looks like your journal’s empty. Time to start adding entries.
           </p>
           <p className="text-lg">
-            Start your journey by creating your very first entry by clicking the
-            bottom '+' button!
+            Get started now — tap the '+' button to create your first entry.
           </p>
           <div className="fixed bottom-20 z-10 left-[calc(100vw-7rem)]">
             <AddEntry />

@@ -1,24 +1,24 @@
 import { Link } from "react-router-dom";
-import { FaHome, FaBookOpen, FaInfo } from "react-icons/fa";
+import { House, NotebookTabs, Info } from "lucide-react";
 
 const NavLinks = ({ toggle }) => {
   return (
     <>
       <li onClick={toggle}>
         <Link to="/">
-          <FaHome />
+          <House size={20} />
           Home
         </Link>
       </li>
       <li onClick={toggle}>
         <Link to="/entries">
-          <FaBookOpen />
+          <NotebookTabs size={20} />
           Your Entries
         </Link>
       </li>
       <li onClick={toggle}>
         <Link to="/about">
-          <FaInfo />
+          <Info size={20} />
           About
         </Link>
       </li>

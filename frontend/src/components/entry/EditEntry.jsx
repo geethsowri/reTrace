@@ -1,5 +1,5 @@
 import ModalLayout from "../ModalLayout";
-import { FaPencilAlt } from "react-icons/fa";
+import { Pencil } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
   useGetEntryQuery,
@@ -59,7 +59,7 @@ const EditEntry = ({ id }) => {
         onClick={() => setOpen(true)}
         className="text-success hover:cursor-pointer"
       >
-        <FaPencilAlt />
+        <Pencil size={20} />
       </p>
 
       <ModalLayout isOpen={open} close={() => setOpen(false)}>

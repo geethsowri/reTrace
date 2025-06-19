@@ -14,9 +14,8 @@ const Home = () => {
                 Welcome Back, {user.data.firstName}
               </h1>
               <p className="text-lg mt-4">
-                Hey! Great to have you back 😊 Your entries are safe, private,
-                and always within reach. No rules just your thoughts, your way.
-                Keep writing, keep growing! 🚀✨
+                Your entries are locked down, private, and ready
+                whenever you are.
               </p>
               <Link to="/entries" className="btn btn-primary mt-6">
                 Go to Your Entries
@@ -28,9 +27,8 @@ const Home = () => {
                 Welcome to reTrace
               </h1>
               <p className="text-lg mt-4">
-                Hey! Great to have you here 😊 Log in to keep your entries safe,
-                private, and always within reach. Write freely, your thoughts
-                your way! 🚀✨
+                Welcome! Log in to keep your entries secure, private, and right
+                at your fingertips.
               </p>
               <Link to="/entries" className="btn btn-primary mt-6">
                 Get Started
@@ -60,9 +58,8 @@ const Home = () => {
                 <div className="p-4 bg-base-100 shadow-lg rounded-lg">
                   <h4 className="text-lg font-semibold">1. Sign Up</h4>
                   <p className="text-gray-500">
-                    Create a free account to start your journey. Your data is
-                    securely stored, ensuring your private thoughts remain
-                    personal.
+                    Create your free account and get started. Your data stays
+                    locked down—your private thoughts, always secure.
                   </p>
                 </div>
                 <div className="p-4 bg-base-100 shadow-lg rounded-lg">

@@ -39,6 +39,7 @@ const Signup = () => {
         `${response.data.firstName}, your account is created and you're logged in!`
       );
     } catch (error) {
+        console.error("Signup Error:", error);
       toast.error(error?.data?.message || "An unexpected error occurred!");
     }
   };

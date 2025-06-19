@@ -1,6 +1,6 @@
 import ModalLayout from "../ModalLayout";
 import { useState } from "react";
-import { FaTrashAlt } from "react-icons/fa";
+import { Trash2 } from "lucide-react";
 import { useDeleteEntryMutation } from "../../redux/api/entriesApiSlice";
 import { toast } from "react-toastify";
 
@@ -23,7 +23,7 @@ const DeleteEntry = ({ id }) => {
         onClick={() => setOpen(true)}
         className="text-error hover:cursor-pointer"
       >
-        <FaTrashAlt />
+        <Trash2 size={20} />
       </p>
 
       <ModalLayout isOpen={open} close={() => setOpen(false)}>
