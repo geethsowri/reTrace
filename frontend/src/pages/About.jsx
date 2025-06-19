@@ -2,11 +2,11 @@ const About = () => {
   return (
     <div className="flex justify-center px-4 sm:px-6 lg:px-10 my-10">
       <div className="w-full max-w-3xl bg-base-200 shadow-xl hover:shadow-2xl rounded-3xl p-6 md:p-8">
-        <h1 className="text-3xl font-bold text-center mb-7">About DayBook</h1>
+        <h1 className="text-3xl font-bold text-center mb-7">About reTrace</h1>
         <p className="text-lg text-center mb-4">
-          DayBook is a secure and trusted digital journal that protects your
+          reTrace is a secure and trusted digital journal that protects your
           thoughts and memories. Built for simplicity and reliability, it allows
-          you to document your experiences with ease. DayBook prioritizes
+          you to document your experiences with ease. reTrace prioritizes
           privacy and a distraction-free experience, ensuring your journaling
           stays personal, secure, and meaningful.
         </p>
@@ -19,7 +19,7 @@ const About = () => {
             <span>✅</span>
             <span>
               <strong>Write & Manage Entries:</strong> Effortlessly create,
-              edit, and delete daybook entries while keeping them safe.
+              edit, and delete reTrace entries while keeping them safe.
             </span>
           </li>
           <li className="flex items-start gap-2">
@@ -39,7 +39,7 @@ const About = () => {
           <li className="flex items-start gap-2">
             <span>🔒</span>
             <span>
-              <strong>Advanced Security Features:</strong> Protect your daybook
+              <strong>Advanced Security Features:</strong> Protect your reTrace
               entries with encrypted authentication, strong passwords, and
               secure cookies.
             </span>
@@ -89,13 +89,13 @@ const About = () => {
         <div className="divider"></div>
 
         <p className="text-lg text-center">
-          Start your journaling journey with <strong>DayBook</strong> - where
+          Start your journaling journey with <strong>reTrace</strong> - where
           your memories are <strong>secure</strong>, <strong>personal</strong>,
           and always accessible.
         </p>
 
         <div className="text-center mt-5">
-          <a href="https://github.com/thenileshnishad/daybook" target="_blank">
+          <a href="https://github.com/thenileshnishad/reTrace" target="_blank">
             <button className="btn btn-primary">
               Explore the Code on GitHub
             </button>

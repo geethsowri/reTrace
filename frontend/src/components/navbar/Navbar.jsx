@@ -32,7 +32,7 @@ const Navbar = () => {
         </div>
         <Link className="btn btn-ghost text-xl pl-0" to="/">
           <img className="w-10 h-10" src={logo} alt="logo" />
-          DayBook
+          reTrace
         </Link>
       </div>
 
