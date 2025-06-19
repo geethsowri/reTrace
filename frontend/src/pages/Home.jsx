@@ -27,7 +27,7 @@ const Home = () => {
                 Welcome to reTrace
               </h1>
               <p className="text-lg mt-4">
-                Welcome! Log in to keep your entries secure, private, and right
+                Log in to keep your entries secure, private, and right
                 at your fingertips.
               </p>
               <Link to="/entries" className="btn btn-primary mt-6">
