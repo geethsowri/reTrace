@@ -18,22 +18,22 @@ const signup = async (req, res) => {
     if (email.length > 50) {
       return res
         .status(422)
-        .json({ message: "Email cannot exceed 50 characters!" });
+        .json({ message: "Email cannot exceed 50 characters." });
     }
     if (firstName.length > 50) {
       return res
         .status(422)
-        .json({ message: "First name cannot exceed 50 characters!" });
+        .json({ message: "First name cannot exceed 50 characters." });
     }
     if (lastName && lastName.length > 50) {
       return res
         .status(422)
-        .json({ message: "Last name cannot exceed 50 characters!" });
+        .json({ message: "Last name cannot exceed 50 characters." });
     }
     if (password.length > 100) {
       return res
         .status(422)
-        .json({ message: "Password cannot exceed 100 characters!" });
+        .json({ message: "Password cannot exceed 100 characters." });
     }
     if (
       !validator.isStrongPassword(password, {
@@ -44,13 +44,13 @@ const signup = async (req, res) => {
         minSymbols: 1,
       })
     ) {
-      return res.status(422).json({ message: "Please enter strong password!" });
+      return res.status(422).json({ message: "Please enter strong password." });
     }
 
     const userExist = await User.findOne({ email });
     if (userExist) {
       return res.status(422).json({
-        message: "User already exist!",
+        message: "User already exist.",
       });
     }
 
