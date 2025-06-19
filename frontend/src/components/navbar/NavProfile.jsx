@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaChevronDown, FaUser, FaSignOutAlt, FaLock } from "react-icons/fa";
 import ModalLayout from "../ModalLayout";
 import { useState } from "react";
-import Profile from "../auth/Profile";
+import Profile from "../auth/Profiles";
 import Password from "../auth/Password";
 import Logout from "../auth/Logout";
 
