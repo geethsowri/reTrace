@@ -1,5 +1,5 @@
 {
-  "name": "daybook",
+  "name": "reTrace",
   "version": "1.0.0",
   "description": "A MERN stack application to manage daily journals and tasks",
   "main": "src/index.js",
@@ -9,21 +9,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thenileshnishad/daybook.git"
+    "url": "git+https://github.com/geethsowri/reTrace.git"
   },
   "keywords": [
     "mern",
-    "daybook",
+    "reTrace",
     "journal",
     "task",
     "management"
   ],
-  "author": "Nilesh Kumar Nishad",
+  "author": "Nainala Geeth Sowri",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thenileshnishad/daybook/issues"
+    "url": "https://github.com/geethsowri/reTrace/issues"
   },
-  "homepage": "https://github.com/thenileshnishad/daybook#readme",
+  "homepage": "https://github.com/geethsowri/reTrace#readme",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",
