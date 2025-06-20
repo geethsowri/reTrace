@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://retrace-eight.vercel.app',
+  'https://retrace-journal.vercel.app/',
 ];
 
 
