@@ -7,4 +7,4 @@ reTrace is a personal journaling app developed using the MERN stack. It provides
 - `NodeJS` `ExpressJS` `MongoDB`
 - `JWT` `Redux Toolkit`
 
-[Start using reTrace ↗](https://retrace-eight.vercel.app/)
+[Start using reTrace ↗](https://retrace-journal.vercel.app/)
