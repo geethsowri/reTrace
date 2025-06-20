@@ -38,13 +38,13 @@ const createEntry = async (req, res) => {
     });
 
     res.status(201).json({
-      message: "Entry added successfully!",
+      message: "Entry added successfully.",
       saveEntry,
     });
   } catch (error) {
-    console.error("Error adding entry!: ", error);
+    console.error("Error adding entry.: ", error);
     res.status(500).json({
-      message: "Something went wrong! Please try again later!",
+      message: "Something went wrong. Please try again later.",
     });
   }
 };
@@ -59,11 +59,11 @@ const getEntries = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "Entries fetched successfully!", data: entries });
+      .json({ message: "Entries fetched successfully.", data: entries });
   } catch (error) {
     console.error("Error fetching entries!: ", error);
     res.status(500).json({
-      message: "Something went wrong! Please try again later!",
+      message: "Something went wrong. Please try again later.",
     });
   }
 };
@@ -80,17 +80,17 @@ const getEntry = async (req, res) => {
 
     if (!entry) {
       return res.status(404).json({
-        message: "Entry not found or does not belong to the logged-in user!",
+        message: "Entry not found or does not belong to the logged-in user.",
       });
     }
 
     res
       .status(200)
-      .json({ message: "Entry fetched successfully!", data: entry });
+      .json({ message: "Entry fetched successfully.", data: entry });
   } catch (error) {
-    console.error("Error fetching this entry!: ", error);
+    console.error("Error fetching this entry.: ", error);
     res.status(500).json({
-      message: "Something went wrong! Please try again later!",
+      message: "Something went wrong. Please try again later.",
     });
   }
 };
@@ -138,11 +138,11 @@ const updateEntry = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "Entry updated successfully!", data: entry });
+      .json({ message: "Entry updated successfully.", data: entry });
   } catch (error) {
-    console.error("Error updating this entry!: ", error);
+    console.error("Error updating this entry.: ", error);
     res.status(500).json({
-      message: "Something went wrong! Please try again later!",
+      message: "Something went wrong. Please try again later.",
     });
   }
 };
@@ -165,11 +165,11 @@ const deleteEntry = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "Entry deleted successfully!", data: entry });
+      .json({ message: "Entry deleted successfully.", data: entry });
   } catch (error) {
-    console.error("Error deleting this entry!: ", error);
+    console.error("Error deleting this entry.: ", error);
     res.status(500).json({
-      message: "Something went wrong! Please try again later!",
+      message: "Something went wrong. Please try again later.",
     });
   }
 };
@@ -205,13 +205,13 @@ const searchEntries = async (req, res) => {
       message:
         entries.length === 0
           ? "No entries found!"
-          : "Entries fetched successfully!",
+          : "Entries fetched successfully.",
       data: entries,
     });
   } catch (error) {
-    console.error("Error searching the entry!", error);
+    console.error("Error searching the entry.", error);
     res.status(500).json({
-      message: "Something went wrong! Please try again later!",
+      message: "Something went wrong. Please try again later.",
     });
   }
 };

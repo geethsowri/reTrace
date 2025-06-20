@@ -3,7 +3,7 @@ const User = require("../models/userModel");
 const viewProfile = (req, res) => {
   const { email, firstName, lastName } = req.user;
   res.status(200).json({
-    message: "Profile fetch successfully!",
+    message: "Profile fetch successfully.",
     data: { email, firstName, lastName },
   });
 };
@@ -35,13 +35,13 @@ const updateProfile = async (req, res) => {
     );
 
     res.status(200).json({
-      message: "Profile updated successfully!",
+      message: "Profile updated successfully.",
       data: { firstName: updateUser.firstName, lastName: updateUser.lastName },
     });
   } catch (error) {
     console.error("Error updating profile!: ", error);
     res.status(500).json({
-      message: "Something went wrong! Please try again later!",
+      message: "Something went wrong. Please try again later.",
     });
   }
 };

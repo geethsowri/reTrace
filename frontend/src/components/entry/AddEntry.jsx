@@ -38,7 +38,7 @@ const AddEntry = () => {
     e.preventDefault();
     try {
       const response = await addEntry(formData).unwrap();
-      toast.success(response.message || "Entry added successfully!");
+      toast.success(response.message || "Entry added successfully.");
       setOpen(false);
     } catch (error) {
       toast.error(error?.data?.message || "An error occurred");
