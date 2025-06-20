@@ -73,6 +73,7 @@ const Login = () => {
                     className="input w-full rounded-lg my-3"
                     placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
+                    autoComplete="current-password" 
                     value={password}
                     required
                   />

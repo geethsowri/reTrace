@@ -66,6 +66,7 @@ const Password = ({ close }) => {
               id="oldPassword"
               value={oldPassword}
               onChange={(e) => setOldPassword(e.target.value)}
+              autoComplete="current-password"
               className="input rounded-lg my-3"
               placeholder="Current password"
             />
@@ -81,6 +82,7 @@ const Password = ({ close }) => {
               id="newPassword"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
+              autoComplete="new-password" 
               className="input rounded-lg my-3"
               placeholder="New password"
             />
