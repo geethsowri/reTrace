@@ -1,11 +1,10 @@
-# daily-grind
+# reTrace
 
-> [!NOTE]
-> STILL UNDER DEVELOPMENT
-
-DailyGrind is a **secure, no-frills journaling app** built with the MERN stack. Users can **log in, write, view, and manage daily entries** with a clean, private interface. Designed for simplicity and security, DailyGrind keeps your thoughts protected and organized.
+reTrace is a personal journaling app developed using the MERN stack. It provides secure login and easy management of daily entries through a clean, intuitive interface. Designed with privacy and simplicity in mind, it ensures users can record and access their entries seamlessly while keeping data safe and confidential.
 
 ### Tools used
 - `ReactJS` `TailwindCSS` `DaisyUI`
 - `NodeJS` `ExpressJS` `MongoDB`
 - `JWT` `Redux Toolkit`
+
+[Start using reTrace ↗](https://retrace-eight.vercel.app/)
