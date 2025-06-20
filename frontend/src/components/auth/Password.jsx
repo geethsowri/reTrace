@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useChangePasswordMutation } from "../../redux/api/usersApiSlice";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast"; // ✅ Switched to hot-toast
 
 const Password = ({ close }) => {
   const user = useSelector((state) => state.user);
@@ -32,10 +32,10 @@ const Password = ({ close }) => {
         oldPassword,
         newPassword,
       }).unwrap();
-      toast.success(response?.message);
+      toast.success(response?.message || "Password updated successfully");
       close();
     } catch (error) {
-      toast.error(error?.data?.message);
+      toast.error(error?.data?.message || "Password change failed");
     }
   };
 
@@ -62,7 +62,6 @@ const Password = ({ close }) => {
             </label>
             <input
               type="password"
-              name="oldPassword"
               id="oldPassword"
               value={oldPassword}
               onChange={(e) => setOldPassword(e.target.value)}
@@ -78,11 +77,10 @@ const Password = ({ close }) => {
             </label>
             <input
               type="password"
-              name="newPassword"
               id="newPassword"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              autoComplete="new-password" 
+              autoComplete="new-password"
               className="input rounded-lg my-3"
               placeholder="New password"
             />
@@ -100,4 +98,5 @@ const Password = ({ close }) => {
     </div>
   );
 };
+
 export default Password;

@@ -2,7 +2,7 @@ import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { useDispatch } from "react-redux";
 import { removeUserInfo } from "../../redux/features/userSlice";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast"; // ✅ switched to react-hot-toast
 
 const Logout = ({ close }) => {
   const [logout, { isLoading }] = useLogoutMutation();
@@ -15,10 +15,10 @@ const Logout = ({ close }) => {
       dispatch(removeUserInfo());
       navigate("/");
       close();
-      toast.success(response.message);
+      toast.success(response.message || "Logged out successfully");
     } catch (error) {
       console.error(error);
-      toast.error("Logout failed!");
+      toast.error(error?.data?.message || "Logout failed!");
     }
   };
 
@@ -40,4 +40,5 @@ const Logout = ({ close }) => {
     </div>
   );
 };
+
 export default Logout;

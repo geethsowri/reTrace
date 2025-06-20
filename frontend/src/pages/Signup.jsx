@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link, Navigate, replace, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useSignupMutation } from "../redux/api/usersApiSlice";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast"; // changed import
 import { useDispatch, useSelector } from "react-redux";
 import { userInfo } from "../redux/features/userSlice";
 
@@ -24,9 +24,7 @@ const Signup = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => {
-      return { ...prevData, [name]: value };
-    });
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -34,12 +32,12 @@ const Signup = () => {
     try {
       const response = await signup(formData).unwrap();
       dispatch(userInfo(response));
-      navigate("/", replace);
+      navigate("/", { replace: true });
       toast.success(
         `${response.data.firstName}, your account is created and you're logged in!`
       );
     } catch (error) {
-        console.error("Signup Error:", error);
+      console.error("Signup Error:", error);
       toast.error(error?.data?.message || "An unexpected error occurred!");
     }
   };

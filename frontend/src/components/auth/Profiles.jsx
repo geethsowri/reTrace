@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useUpdateProfileMutation } from "../../redux/api/usersApiSlice";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast"; // ✅ switched to react-hot-toast
 
 const Profile = ({ close }) => {
   const user = useSelector((state) => state.user);
@@ -19,14 +19,15 @@ const Profile = ({ close }) => {
   }, [user, close]);
 
   const [updateProfile, { isLoading }] = useUpdateProfileMutation();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await updateProfile({ firstName, lastName }).unwrap();
-      toast.success(response.message);
+      toast.success(response?.message || "Profile updated successfully");
       close();
     } catch (error) {
-      toast.error(error?.data?.message);
+      toast.error(error?.data?.message || "Failed to update profile");
     }
   };
 
@@ -54,7 +55,6 @@ const Profile = ({ close }) => {
             </label>
             <input
               type="text"
-              name="firstName"
               id="firstName"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -67,7 +67,6 @@ const Profile = ({ close }) => {
             <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
-              name="lastName"
               id="lastName"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -88,4 +87,5 @@ const Profile = ({ close }) => {
     </div>
   );
 };
+
 export default Profile;

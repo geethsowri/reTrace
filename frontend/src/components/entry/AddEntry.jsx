@@ -2,7 +2,7 @@ import ModalLayout from "../ModalLayout";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useAddEntryMutation } from "../../redux/api/entriesApiSlice";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast"; // ✅ use hot-toast
 
 const AddEntry = () => {
   const [open, setOpen] = useState(false);
@@ -16,31 +16,32 @@ const AddEntry = () => {
   });
 
   useEffect(() => {
-    const initialData = {
-      title: "",
-      mood: "🙂",
-      content: "",
-      date: new Date().toISOString().slice(0, 10),
-    };
-    setFormData(initialData);
+    if (open) {
+      setFormData({
+        title: "",
+        mood: "🙂",
+        content: "",
+        date: new Date().toISOString().slice(0, 10),
+      });
+    }
   }, [open]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await addEntry(formData).unwrap();
+      toast.success(response.message || "Entry added successfully!");
       setOpen(false);
-      toast.success(response.message);
     } catch (error) {
-      toast.error(error.data?.message || "An error occurred");
+      toast.error(error?.data?.message || "An error occurred");
     }
   };
 
@@ -138,4 +139,5 @@ const AddEntry = () => {
     </>
   );
 };
+
 export default AddEntry;

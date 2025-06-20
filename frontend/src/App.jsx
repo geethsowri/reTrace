@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { ToastContainer } from "react-toastify";
+import { Toaster } from 'react-hot-toast';
 
 
 import Layout from "./components/Layout";
@@ -17,7 +17,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <ToastContainer />
+        <Toaster position="bottom-center" reverseOrder={false} />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

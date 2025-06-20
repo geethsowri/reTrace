@@ -2,7 +2,7 @@ import ModalLayout from "../ModalLayout";
 import { useState } from "react";
 import { Trash2 } from "lucide-react";
 import { useDeleteEntryMutation } from "../../redux/api/entriesApiSlice";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast"; // ✅ switched
 
 const DeleteEntry = ({ id }) => {
   const [open, setOpen] = useState(false);
@@ -11,9 +11,10 @@ const DeleteEntry = ({ id }) => {
   const handleDelete = async () => {
     try {
       const response = await deleteEntry(id).unwrap();
-      toast.success(response.message);
+      toast.success(response?.message || "Entry deleted successfully");
+      setOpen(false); // ✅ close modal after delete
     } catch (error) {
-      toast.error("Failed to delete the entry!");
+      toast.error(error?.data?.message || "Failed to delete the entry");
     }
   };
 
@@ -27,9 +28,7 @@ const DeleteEntry = ({ id }) => {
       </p>
 
       <ModalLayout isOpen={open} close={() => setOpen(false)}>
-        <h1 className="text-lg">
-          Are you sure you want to delete this entry?
-        </h1>
+        <h1 className="text-lg">Are you sure you want to delete this entry?</h1>
         <div className="modal-action">
           <button onClick={() => setOpen(false)} className="btn btn-success">
             Cancel
@@ -46,4 +45,5 @@ const DeleteEntry = ({ id }) => {
     </div>
   );
 };
+
 export default DeleteEntry;

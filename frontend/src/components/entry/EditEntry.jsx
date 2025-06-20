@@ -5,7 +5,7 @@ import {
   useGetEntryQuery,
   useUpdateEntryMutation,
 } from "../../redux/api/entriesApiSlice";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast"; // switched here
 
 const EditEntry = ({ id }) => {
   const [open, setOpen] = useState(false);
@@ -25,10 +25,10 @@ const EditEntry = ({ id }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   useEffect(() => {
@@ -47,9 +47,9 @@ const EditEntry = ({ id }) => {
     try {
       const response = await updateEntry({ id, data: formData }).unwrap();
       setOpen(false);
-      toast.success(response.message);
+      toast.success(response?.message || "Entry updated successfully");
     } catch (error) {
-      toast.error(error.data.message);
+      toast.error(error?.data?.message || "Failed to update entry");
     }
   };
 
@@ -147,4 +147,5 @@ const EditEntry = ({ id }) => {
     </>
   );
 };
+
 export default EditEntry;
