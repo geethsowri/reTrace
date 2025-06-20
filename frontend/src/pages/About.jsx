@@ -95,7 +95,7 @@ const About = () => {
         </p>
 
         <div className="text-center mt-5">
-          <a href="https://github.com/geethsoeri/reTrace" target="_blank">
+          <a href="https://github.com/geethsowri/reTrace" target="_blank">
             <button className="btn btn-primary">
               Explore the Code on GitHub
             </button>
