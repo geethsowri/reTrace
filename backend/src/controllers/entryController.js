@@ -179,13 +179,13 @@ const searchEntries = async (req, res) => {
   const queryText = req.query.text;
 
   if (!queryText?.trim()) {
-    return res.status(400).json({ message: "Search text is required!" });
+    return res.status(400).json({ message: "Search text is required." });
   }
 
   if (queryText.length > 100) {
     return res
       .status(422)
-      .json({ message: "Search string cannot be exceed 100 charactere!" });
+      .json({ message: "Search string cannot exceed 100 charactere." });
   }
 
   try {

@@ -1,15 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const authMiddleware = require("../middleware/authMiddleware");
-const entryController = require("../controllers/entryController");
+const userController = require("../controllers/userController");
 
-router.use(authMiddleware);
-
-router.post("/", entryController.createEntry);
-router.get("/", entryController.getEntries);
-router.get("/search", entryController.searchEntries);
-router.get("/:id", entryController.getEntry);
-router.patch("/:id", entryController.updateEntry);
-router.delete("/:id", entryController.deleteEntry);
+router.get("/me", authMiddleware, userController.viewProfile);
+router.put("/me", authMiddleware, userController.updateProfile);
 
 module.exports = router;
