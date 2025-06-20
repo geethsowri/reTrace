@@ -4,7 +4,7 @@ import { House, NotebookTabs, Info } from "lucide-react";
 const NavLinks = ({ toggle }) => {
   return (
     <>
-      <li onClick={toggle}>
+      <li className="mt-4 sm:mt-0" onClick={toggle}>
         <Link to="/">
           <House size={20} />
           Home

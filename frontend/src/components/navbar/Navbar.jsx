@@ -46,8 +46,8 @@ const Navbar = () => {
         <div className="hidden md:flex">
           <SearchBox />
         </div>
-        <ThemeController />
         <NavProfile />
+        <ThemeController />
       </div>
     </div>
   );
