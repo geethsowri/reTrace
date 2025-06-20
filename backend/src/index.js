@@ -6,23 +6,25 @@ const connectDB = require("./config/database");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const allowedOrigins = [
-  'http://localhost:5173',
-  'https://retrace-journal.vercel.app/',
+  "http://localhost:5173",
+  "https://retrace-eight.vercel.app",
+  "https://retrace-journal.vercel.app", // ← new frontend
 ];
 
-
-app.use(cors({
-  origin: (origin, callback) => {
-    console.log("CORS origin received:", origin); 
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      console.log("CORS origin received:", origin);
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
