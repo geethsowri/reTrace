@@ -43,5 +43,5 @@ connectDB()
     });
   })
   .catch((error) => {
-    console.log("Database not connected! " + error);
+    console.log("Database not connected. " + error);
   });

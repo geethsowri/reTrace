@@ -14,7 +14,7 @@ const updateProfile = async (req, res) => {
 
   if (!firstName) {
     return res.status(422).json({
-      message: "First name is required!",
+      message: "First name is required.",
     });
   }
 

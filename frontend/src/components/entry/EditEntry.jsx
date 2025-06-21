@@ -139,7 +139,7 @@ const EditEntry = ({ id }) => {
               className="btn btn-primary w-full rounded-lg mt-3"
               disabled={isLoading}
             >
-              {isLoading ? "Please wait!.." : "Save Changes"}
+              {isLoading ? "Please wait..." : "Save Changes"}
             </button>
           </form>
         </div>

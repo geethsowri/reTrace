@@ -38,7 +38,7 @@ const Signup = () => {
       );
     } catch (error) {
       console.error("Signup Error:", error);
-      toast.error(error?.data?.message || "An unexpected error occurred!");
+      toast.error(error?.data?.message || "An unexpected error occurred.");
     }
   };
 

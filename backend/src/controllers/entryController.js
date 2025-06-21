@@ -204,7 +204,7 @@ const searchEntries = async (req, res) => {
     res.status(200).json({
       message:
         entries.length === 0
-          ? "No entries found!"
+          ? "No entries found."
           : "Entries fetched successfully.",
       data: entries,
     });

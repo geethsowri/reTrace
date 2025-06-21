@@ -13,7 +13,7 @@ const signup = async (req, res) => {
       return res.status(400).json({ message: "Fill all required fields!" });
     }
     if (!validator.isEmail(email)) {
-      return res.status(422).json({ message: "Invalid email format!" });
+      return res.status(422).json({ message: "Invalid email format." });
     }
     if (email.length > 50) {
       return res
@@ -128,7 +128,7 @@ const changePassword = async (req, res) => {
     if (!oldPassword || !newPassword) {
       return res
         .status(400)
-        .json({ message: "Both old and new passwords are required!" });
+        .json({ message: "Both old and new passwords are required." });
     }
 
     const passwordCompare = await bcrypt.compare(
@@ -136,7 +136,7 @@ const changePassword = async (req, res) => {
       loggedUser.password
     );
     if (!passwordCompare) {
-      return res.status(401).json({ message: "Old Password is incorrect!" });
+      return res.status(401).json({ message: "Old Password is incorrect." });
     }
     if (await bcrypt.compare(newPassword, loggedUser.password)) {
       return res.status(422).json({ message: "New password must differ." });
@@ -150,7 +150,7 @@ const changePassword = async (req, res) => {
         minSymbols: 1,
       })
     ) {
-      return res.status(422).json({ message: "Please enter strong password!" });
+      return res.status(422).json({ message: "Please enter strong password." });
     }
 
     const hashedPassword = await bcrypt.hash(newPassword, 10);
@@ -159,7 +159,7 @@ const changePassword = async (req, res) => {
 
     res.status(200).json({ message: "Password changed successfully." });
   } catch (error) {
-    console.error("Error updating password!: ", error);
+    console.error("Error updating password.: ", error);
     res.status(500).json({
       message: "Something went wrong. Please try again later.",
     });

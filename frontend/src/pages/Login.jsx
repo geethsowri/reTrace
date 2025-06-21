@@ -27,7 +27,7 @@ const Login = () => {
 
       toast.success(`Welcome back, ${response.data.firstName}`);
     } catch (error) {
-      toast.error(error?.data?.message || "An unexpected error occurred!");
+      toast.error(error?.data?.message || "An unexpected error occurred.");
     }
   };
 
