@@ -57,7 +57,7 @@ const NavProfile = () => {
           onClick={() => setDropdownOpen((prev) => !prev)}
           aria-haspopup="true"
           aria-expanded={dropdownOpen}
-          className="flex items-center gap-2 px-4 py-2 rounded-md bg-[#242424] text-gray-100 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 transition"
+          className="flex items-center gap-2 px-4 py-2 rounded-md bg-[#242424] text-gray-100 hover:bg-[#323232]  transition"
         >
           {user.data.firstName}
           <ChevronDown size={20} />
@@ -65,7 +65,7 @@ const NavProfile = () => {
 
         {dropdownOpen && (
           <ul
-            className="absolute right-0 mt-2 w-52 bg-[#242424] border border-gray-700 rounded-md shadow-lg z-50"
+            className="absolute right-0 mt-6 w-52 bg-[#242424] border border-gray-700 rounded-md shadow-lg z-50"
             role="menu"
             aria-label="User menu"
           >

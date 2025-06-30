@@ -7,7 +7,7 @@ import logo from "../../assets/logo.svg";
 
 const Navbar = () => {
   return (
-    <nav className="w-full sticky top-0 z-10 bg-[#1a1a1a] text-stone-100 shadow-md flex items-center px-4 md:px-8 h-16">
+    <nav className="w-full sticky top-0 z-10 bg-[#1a1a1a] text-stone-100 shadow-md flex items-center px-4 md:px-2 h-16">
       
       {/* Left: Hamburger + Logo */}
       <div className="flex items-center gap-6 flex-shrink-0">
