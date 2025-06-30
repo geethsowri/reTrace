@@ -5,7 +5,7 @@ import {
   useGetEntryQuery,
   useUpdateEntryMutation,
 } from "../../redux/api/entriesApiSlice";
-import toast from "react-hot-toast"; // switched here
+import toast from "react-hot-toast";
 
 const EditEntry = ({ id }) => {
   const [open, setOpen] = useState(false);
@@ -13,7 +13,6 @@ const EditEntry = ({ id }) => {
     skip: !open,
   });
   const [updateEntry, { isLoading: entryUpdating }] = useUpdateEntryMutation();
-
   const isLoading = entryLoading || entryUpdating;
 
   const [formData, setFormData] = useState({
@@ -25,10 +24,7 @@ const EditEntry = ({ id }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   useEffect(() => {
@@ -45,11 +41,11 @@ const EditEntry = ({ id }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await updateEntry({ id, data: formData }).unwrap();
+      const res = await updateEntry({ id, data: formData }).unwrap();
       setOpen(false);
-      toast.success(response?.message || "Entry updated successfully");
-    } catch (error) {
-      toast.error(error?.data?.message || "Failed to update entry");
+      toast.success(res?.message || "Entry updated.");
+    } catch (err) {
+      toast.error(err?.data?.message || "Update failed.");
     }
   };
 
@@ -57,21 +53,19 @@ const EditEntry = ({ id }) => {
     <>
       <p
         onClick={() => setOpen(true)}
-        className="text-success hover:cursor-pointer"
+        className="text-green-400 hover:text-green-300 cursor-pointer"
       >
-        <Pencil size={20} />
+        <Pencil size={18} />
       </p>
 
       <ModalLayout isOpen={open} close={() => setOpen(false)}>
-        <div className="card-body">
-          <h2 className="card-title block text-center text-lg mb-2">
-            Edit Your Entry
-          </h2>
+        <div className="bg-[#1a1a1a] text-gray-200 rounded-2xl p-6 space-y-5 max-w-lg mx-auto shadow-xl">
+          <h2 className="text-center text-xl font-semibold">Edit Your Entry</h2>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor={`title.${id}`}>
-                Entry Title <span className="text-red-500">*</span>
+              <label className="text-sm" htmlFor={`title.${id}`}>
+                Title <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -79,16 +73,16 @@ const EditEntry = ({ id }) => {
                 id={`title.${id}`}
                 value={formData.title}
                 onChange={handleChange}
-                className="input w-full rounded-lg my-3"
                 required
                 placeholder="Give your entry a title"
+                className="w-full mt-1 px-3 py-2 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
-            <div className="flex gap-5 justify-center items-center">
-              <div>
-                <label htmlFor={`date.${id}`}>
-                  Select Date <span className="text-red-500">*</span>
+            <div className="flex gap-4">
+              <div className="flex-1">
+                <label className="text-sm" htmlFor={`date.${id}`}>
+                  Date <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="date"
@@ -96,21 +90,20 @@ const EditEntry = ({ id }) => {
                   id={`date.${id}`}
                   value={formData.date}
                   onChange={handleChange}
-                  className="input rounded-lg my-3"
+                  className="w-full mt-1 px-3 py-2 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg"
                 />
               </div>
 
-              <div>
-                <label htmlFor={`mood.${id}`}>
-                  Your Mood <span className="text-red-500">*</span>
+              <div className="flex-1">
+                <label className="text-sm" htmlFor={`mood.${id}`}>
+                  Mood <span className="text-red-500">*</span>
                 </label>
-
                 <select
                   name="mood"
                   id={`mood.${id}`}
                   value={formData.mood}
                   onChange={handleChange}
-                  className="select rounded-lg my-3"
+                  className="w-full mt-1 px-3 py-2 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg"
                 >
                   <option value="🙂">🙂 Happy</option>
                   <option value="😔">😔 Sad</option>
@@ -120,26 +113,26 @@ const EditEntry = ({ id }) => {
             </div>
 
             <div>
-              <label htmlFor={`content.${id}`}>
-                Describe Your Day <span className="text-red-500">*</span>
+              <label className="text-sm" htmlFor={`content.${id}`}>
+                Content <span className="text-red-500">*</span>
               </label>
               <textarea
                 name="content"
                 id={`content.${id}`}
                 value={formData.content}
                 onChange={handleChange}
-                className="textarea w-full rounded-lg my-3 h-50"
                 required
-                placeholder="Write about your day, thoughts, or experiences"
+                placeholder="Write your thoughts..."
+                className="w-full mt-1 px-3 py-2 h-40 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <button
               type="submit"
-              className="btn btn-primary w-full rounded-lg mt-3"
               disabled={isLoading}
+              className="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition"
             >
-              {isLoading ? "Please wait..." : "Save Changes"}
+              {isLoading ? "Saving..." : "Save Changes"}
             </button>
           </form>
         </div>

@@ -13,9 +13,7 @@ const Entries = () => {
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
+  if (!user) return <Navigate to="/login" replace />;
 
   const { data: getEntries, isLoading: isLoadingEntries } = useGetEntriesQuery(
     undefined,
@@ -29,7 +27,7 @@ const Entries = () => {
 
   if (isLoadingEntries || isLoadingSearch) {
     return (
-      <div className="flex justify-center items-center min-h-[calc(100dvh-64px-52px)]">
+      <div className="flex justify-center items-center min-h-[calc(100dvh-64px-52px)] bg-[#0f0f0f] text-gray-200">
         <Loader />
       </div>
     );
@@ -38,49 +36,36 @@ const Entries = () => {
   const entries =
     searchQuery.length > 0 ? searchResult?.data || [] : getEntries?.data || [];
 
+  const EmptyState = ({ title, subtitle }) => (
+    <div className="text-center px-6 py-16 min-h-[calc(100dvh-64px-52px-40px)] bg-[#0f0f0f] text-gray-300">
+      <p className="text-2xl font-semibold mb-4">{title}</p>
+      <p className="text-lg text-gray-400">{subtitle}</p>
+      <div className="fixed bottom-16 right-10 z-10">
+        <AddEntry />
+      </div>
+    </div>
+  );
+
   if (entries.length === 0) {
-    if (searchResult) {
-      return (
-        <div className="text-center mt-10 mx-7 min-h-[calc(100dvh-64px-52px-40px)]">
-          <p className="text-2xl font-semibold mb-2">
-            No luck, {user.data.firstName}. Couldn’t find any entries that match
-            your search. Try tweaking your query.
-          </p>
-          <p className="text-lg">
-            No matching entries found. Try different keywords and take another
-            shot.
-          </p>
-          <div className="fixed bottom-20 z-10 left-[calc(100vw-7rem)]">
-            <AddEntry />
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="text-center mt-10 mx-7 min-h-[calc(100dvh-64px-52px-40px)]">
-          <p className="text-2xl font-semibold mb-2">
-            Welcome, {user.data.firstName}
-          </p>
-          <p className="text-lg mb-2">
-           Looks like your journal’s empty. Time to start adding entries.
-          </p>
-          <p className="text-lg">
-            Get started now — tap the '+' button to create your first entry.
-          </p>
-          <div className="fixed bottom-20 z-10 left-[calc(100vw-7rem)]">
-            <AddEntry />
-          </div>
-        </div>
-      );
-    }
+    return searchResult ? (
+      <EmptyState
+        title={`No luck, ${user.data.firstName}.`}
+        subtitle="Nothing matches your search. Try different keywords."
+      />
+    ) : (
+      <EmptyState
+        title={`Welcome, ${user.data.firstName}`}
+        subtitle="Looks like your journal’s empty. Hit the + button to start writing."
+      />
+    );
   }
 
   return (
-    <div>
-      <div className="fixed bottom-20 z-10 left-[calc(100vw-7rem)]">
+    <div className="bg-[#0f0f0f] min-h-screen text-gray-200 px-6 pb-20 pt-6">
+      <div className="fixed bottom-16 right-10 z-10">
         <AddEntry />
       </div>
-      <div className="flex flex-wrap gap-10 justify-center my-10 min-h-[calc(100dvh-64px-52px-80px)] mx-7">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
         {entries.map((entry) => (
           <EntryCard
             key={entry._id}
@@ -97,4 +82,5 @@ const Entries = () => {
     </div>
   );
 };
+
 export default Entries;

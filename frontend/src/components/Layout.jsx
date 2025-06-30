@@ -29,13 +29,11 @@ const Layout = () => {
   }, [profile, dispatch, isError, isLoading]);
 
   if (!isReady) {
-    const getTheme = localStorage.getItem("theme")
-      ? localStorage.getItem("theme")
-      : "dark";
+    const theme = localStorage.getItem("theme") || "dark";
     return (
       <div
-        data-theme={getTheme}
-        className="flex justify-center items-center min-h-[calc(100dvh)]"
+        data-theme={theme}
+        className="flex justify-center items-center min-h-screen bg-[#0e0e0e] text-white"
       >
         <Loader />
       </div>
@@ -43,7 +41,7 @@ const Layout = () => {
   }
 
   return (
-    <div className="drawer">
+    <div className="drawer text-gray-200 bg-[#0e0e0e]">
       <input
         id="my-drawer-3"
         type="checkbox"
@@ -51,29 +49,32 @@ const Layout = () => {
         checked={isDrawerOpen}
         onChange={toggle}
       />
-      <div className="drawer-content">
+
+      <div className="drawer-content flex flex-col min-h-screen">
         <Navbar />
-        <Outlet />
+        <main className="flex-grow">
+          <Outlet />
+        </main>
         <Footer />
       </div>
 
-      <div className="drawer-side z-20">
+      <div className="drawer-side z-40">
         <label
           htmlFor="my-drawer-3"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 min-h-screen w-80 p-4">
-          <div className="py-4 pb-5">
-            <Link
-              className="btn btn-ghost text-2xl p-0"
-              to="/"
-              onClick={toggle}
-            >
-              <img className="w-10 h-10" src={logo} alt="logo" />
-              reTrace
-            </Link>
-          </div>
+
+        <ul className="menu bg-[#121212] text-white w-80 min-h-full p-6 space-y-4">
+          <Link
+            to="/"
+            onClick={toggle}
+            className="flex items-center gap-3 mb-4"
+          >
+            <img src={logo} alt="logo" className="w-8 h-8" />
+            <span className="text-xl font-semibold">reTrace</span>
+          </Link>
+
           <SearchBox toggle={toggle} />
           <NavLinks toggle={toggle} />
         </ul>
@@ -81,4 +82,5 @@ const Layout = () => {
     </div>
   );
 };
+
 export default Layout;

@@ -2,7 +2,7 @@ import ModalLayout from "../ModalLayout";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useAddEntryMutation } from "../../redux/api/entriesApiSlice";
-import toast from "react-hot-toast"; // ✅ use hot-toast
+import toast from "react-hot-toast";
 
 const AddEntry = () => {
   const [open, setOpen] = useState(false);
@@ -37,11 +37,11 @@ const AddEntry = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await addEntry(formData).unwrap();
-      toast.success(response.message || "Entry added successfully.");
+      const res = await addEntry(formData).unwrap();
+      toast.success(res.message || "Entry saved.");
       setOpen(false);
-    } catch (error) {
-      toast.error(error?.data?.message || "An error occurred");
+    } catch (err) {
+      toast.error(err?.data?.message || "Couldn’t save your entry.");
     }
   };
 
@@ -49,21 +49,19 @@ const AddEntry = () => {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="btn btn-circle w-14 h-14 bg-primary text-white hover:scale-105 hover:cursor-pointer"
+        className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xl flex justify-center items-center transition shadow-lg"
       >
-        <FaPlus className="text-2xl" />
+        <FaPlus />
       </button>
 
       <ModalLayout isOpen={open} close={() => setOpen(false)}>
-        <div className="card-body">
-          <h2 className="card-title block text-center text-lg mb-2">
-            Add New Entry
-          </h2>
+        <div className="bg-[#1a1a1a] text-gray-200 p-6 rounded-2xl shadow-xl max-w-lg mx-auto space-y-5">
+          <h2 className="text-center text-xl font-semibold">Add New Entry</h2>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="title">
-                Entry Title <span className="text-red-500">*</span>
+              <label className="text-sm" htmlFor="title">
+                Title <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -71,16 +69,16 @@ const AddEntry = () => {
                 id="title"
                 value={formData.title}
                 onChange={handleChange}
-                className="input w-full rounded-lg my-3"
                 required
-                placeholder="Give your entry a title"
+                placeholder="Your journal title..."
+                className="w-full mt-1 px-3 py-2 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
 
-            <div className="flex gap-5 justify-center items-center">
-              <div>
-                <label htmlFor="date">
-                  Select Date <span className="text-red-500">*</span>
+            <div className="flex gap-4">
+              <div className="flex-1">
+                <label className="text-sm" htmlFor="date">
+                  Date <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="date"
@@ -88,21 +86,20 @@ const AddEntry = () => {
                   id="date"
                   value={formData.date}
                   onChange={handleChange}
-                  className="input rounded-lg my-3"
+                  className="w-full mt-1 px-3 py-2 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg"
                 />
               </div>
 
-              <div>
-                <label htmlFor="mood">
-                  Your Mood <span className="text-red-500">*</span>
+              <div className="flex-1">
+                <label className="text-sm" htmlFor="mood">
+                  Mood <span className="text-red-500">*</span>
                 </label>
-
                 <select
                   name="mood"
                   id="mood"
                   value={formData.mood}
                   onChange={handleChange}
-                  className="select rounded-lg my-3"
+                  className="w-full mt-1 px-3 py-2 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg"
                 >
                   <option value="🙂">🙂 Happy</option>
                   <option value="😔">😔 Sad</option>
@@ -112,24 +109,24 @@ const AddEntry = () => {
             </div>
 
             <div>
-              <label htmlFor="content">
-                Describe Your Day <span className="text-red-500">*</span>
+              <label className="text-sm" htmlFor="content">
+                What’s on your mind? <span className="text-red-500">*</span>
               </label>
               <textarea
                 name="content"
                 id="content"
                 value={formData.content}
                 onChange={handleChange}
-                className="textarea w-full rounded-lg my-3 h-50"
                 required
-                placeholder="Write about your day, thoughts, or experiences"
+                placeholder="Write your thoughts, memories, or feelings..."
+                className="w-full mt-1 px-3 py-2 h-40 bg-[#2a2a2a] border border-[#3a3a3a] rounded-lg resize-none focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
 
             <button
               type="submit"
-              className="btn btn-primary w-full rounded-lg mt-3"
               disabled={isLoading}
+              className="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition disabled:opacity-50"
             >
               {isLoading ? "Saving..." : "Save Entry"}
             </button>

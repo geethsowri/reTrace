@@ -31,7 +31,7 @@ const EntryCard = ({
     const parts = text.split(new RegExp(`(${highlightText})`, "gi"));
     return parts.map((part, index) =>
       part.toLowerCase() === highlightText.toLowerCase() ? (
-        <span key={index} className="text-secondary">
+        <span key={index} className="text-blue-400 font-semibold">
           {part}
         </span>
       ) : (
@@ -41,35 +41,36 @@ const EntryCard = ({
   };
 
   return (
-    <div className="card bg-base-200 w-100 h-70 shadow-xl hover:shadow-2xl rounded-3xl p-3">
-      <div className="flex justify-between items-center pt-4 px-3">
-        <p className="text-sm">{formattedDate}</p>
+    <div className="bg-[#1a1a1a] border border-[#2c2c2c] rounded-2xl shadow-md hover:shadow-lg transition duration-200 w-full max-w-md mx-auto flex flex-col justify-between">
+      <div className="flex justify-between items-center px-4 pt-4">
+        <p className="text-xs text-gray-500">{formattedDate}</p>
         <div className="flex gap-2">
           <EditEntry id={id} />
           <DeleteEntry id={id} />
         </div>
       </div>
 
-      <div className="card-body p-4">
-        <h2 className="card-title block">
+      <div className="px-4 py-3 space-y-3">
+        <h2 className="text-lg font-semibold text-gray-200">
           {mood} {highlightMatch(title)}
         </h2>
-        <p className="break-words">{highlightMatch(contentLimit)}</p>
+        <p className="text-sm text-gray-400 break-words leading-relaxed">
+          {highlightMatch(contentLimit)}
+        </p>
       </div>
 
-      <div className="flex justify-between items-center pb-4 px-3">
-        <div className="text-left text-sm">Edited: {formattedUpdateAt}</div>
-        <div className="text-left text-sm">
-          <ReadMore
-            formattedDate={formattedDate}
-            title={title}
-            mood={mood}
-            content={content}
-            formattedUpdateAt={formattedUpdateAt}
-          />
-        </div>
+      <div className="flex justify-between items-center px-4 pb-4 text-xs text-gray-600">
+        <span>Edited: {formattedUpdateAt}</span>
+        <ReadMore
+          formattedDate={formattedDate}
+          title={title}
+          mood={mood}
+          content={content}
+          formattedUpdateAt={formattedUpdateAt}
+        />
       </div>
     </div>
   );
 };
+
 export default EntryCard;

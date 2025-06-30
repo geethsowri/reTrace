@@ -7,34 +7,42 @@ const SearchBox = ({ toggle }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (searchQuery) {
-      navigate(`/entries?search=${searchQuery.trim()}`);
-      setSearchQuery("");
+    const query = searchQuery.trim();
+    if (query) {
+      navigate(`/entries?search=${encodeURIComponent(query)}`);
     } else {
       navigate("/entries");
     }
     toggle && toggle();
+    setSearchQuery("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="join">
-        <input
-          name="search"
-          className="input join-item bg-base-100"
-          placeholder="Search Entries..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          autoComplete="off"
-        />
-        <button
-          type="submit"
-          className="btn join-item rounded-r-full bg-base-100"
-        >
-          Search
-        </button>
-      </div>
+    <form
+      onSubmit={handleSubmit}
+      className="w-full max-w-md mx-auto flex"
+      role="search"
+      aria-label="Search journal entries"
+    >
+      <input
+        type="search"
+        name="search"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search entries..."
+        autoComplete="off"
+        aria-label="Search journal entries"
+        className="flex-grow px-4 py-2 rounded-l-full border border-stone-800 bg-[#1a1a1a] text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-600 transition"
+      />
+      <button
+        type="submit"
+        aria-label="Submit search"
+        className="px-6 py-2 bg-[#242424] text-gray-100 rounded-r-full hover:bg-[#1a1a1a] focus:outline-none focus:ring-2 focus:ring-gray-600 transition"
+      >
+        Search
+      </button>
     </form>
   );
 };
+
 export default SearchBox;

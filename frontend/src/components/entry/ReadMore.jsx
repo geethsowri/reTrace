@@ -13,28 +13,25 @@ const ReadMore = ({
   return (
     <>
       <button
-        className="btn btn-sm btn-outline btn-primary"
+        className="text-sm px-3 py-1 border border-gray-700 rounded-lg text-gray-300 hover:bg-gray-800 transition"
         onClick={() => setOpen(true)}
       >
         Read More
       </button>
 
       <ModalLayout isOpen={open} close={() => setOpen(false)}>
-        <div>
-          <div className="block text-center card-title pb-2">
-            <span>{mood} </span>
-            <span>{title} </span>
+        <div className="bg-[#1a1a1a] text-gray-200 rounded-2xl p-6 space-y-4 max-w-xl mx-auto shadow-lg">
+          <div className="text-center text-xl font-semibold tracking-tight">
+            <span className="text-blue-400">{mood}</span> – {title}
           </div>
 
-          <div className="text-left text-sm p-2 pb-1">
-            Date: {formattedDate}
+          <div className="text-sm text-gray-500">Date: {formattedDate}</div>
+
+          <div className="text-base text-gray-300 leading-relaxed whitespace-pre-wrap">
+            {content}
           </div>
 
-          <div className="card-body p-2 pb-0">
-            <p className="break-words">{content}</p>
-          </div>
-
-          <div className="text-right text-sm p-2 pb-0">
+          <div className="text-right text-xs text-gray-500 mt-4">
             Last edit: {formattedUpdateAt}
           </div>
         </div>
@@ -42,4 +39,5 @@ const ReadMore = ({
     </>
   );
 };
+
 export default ReadMore;

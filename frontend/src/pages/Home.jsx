@@ -5,109 +5,78 @@ const Home = () => {
   const user = useSelector((state) => state.user);
 
   return (
-    <div>
-      <div className="flex justify-center items-center min-h-[calc(100svh-64px-40px)] relative">
-        <div className="text-center py-10 max-w-3xl mx-4">
-          {user ? (
-            <>
-              <h1 className="text-3xl xl:text-5xl font-bold text-primary">
-                Welcome Back, {user.data.firstName}
-              </h1>
-              <p className="text-lg mt-4">
-                Your entries are locked down, private, and ready
-                whenever you are.
-              </p>
-              <Link to="/entries" className="btn btn-primary mt-6">
-                Go to Your Entries
-              </Link>
-            </>
-          ) : (
-            <>
-              <h1 className="text-3xl xl:text-5xl font-bold text-primary">
-                Welcome to reTrace
-              </h1>
-              <p className="text-lg mt-4">
-                Log in to keep your entries secure, private, and right
-                at your fingertips.
-              </p>
-              <Link to="/entries" className="btn btn-primary mt-6">
-                Get Started
-              </Link>
-            </>
-          )}
+    <div className="bg-[#0f0f0f] text-gray-200 min-h-screen font-sans">
+      <div className="flex justify-center items-center min-h-[calc(100svh-64px)] relative px-4">
+        <div className="text-center max-w-2xl space-y-6">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+            {user ? `Welcome back, ${user.data.firstName}` : "Welcome to reTrace"}
+          </h1>
+          <p className="text-gray-400 text-lg">
+            {user
+              ? "Your entries are private, encrypted, and always ready."
+              : "Log in to keep your journal secure and within reach."}
+          </p>
+          <Link
+            to="/entries"
+            className="inline-block bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-2xl transition duration-200"
+          >
+            {user ? "Go to Your Entries" : "Get Started"}
+          </Link>
         </div>
-        <div className="absolute bottom-10 animate-bounce">
-          <span className="text-gray-500 text-sm">
-            Scroll down to discover more ↓
-          </span>
+        <div className="absolute bottom-6 animate-bounce text-sm text-gray-500">
+          ↓ Scroll to Explore
         </div>
       </div>
 
-      <div className="flex justify-center items-center min-h-[calc(100svh-64px-40px)]">
-        <div className="mt-16 max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center pb-2">
-            Working & Key Features
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-10 my-10">
-            <div>
-              <h3 className="text-xl font-semibold text-center md:text-left">
-                Getting Started is Simple
-              </h3>
-              <div className="mt-6 space-y-6">
-                <div className="p-4 bg-base-100 shadow-lg rounded-lg">
-                  <h4 className="text-lg font-semibold">1. Sign Up</h4>
-                  <p className="text-gray-500">
-                    Create your free account and get started. Your data stays
-                    locked down—your private thoughts, always secure.
-                  </p>
-                </div>
-                <div className="p-4 bg-base-100 shadow-lg rounded-lg">
-                  <h4 className="text-lg font-semibold">2. Start Writing</h4>
-                  <p className="text-gray-500">
-                    Write freely without limitations. Capture your emotions and
-                    document important events, and revisit them anytime.
-                  </p>
-                </div>
-                <div className="p-4 bg-base-100 shadow-lg rounded-lg">
-                  <h4 className="text-lg font-semibold">3. Manage Profile</h4>
-                  <p className="text-gray-500">
-                    Update your first name, last name, and change your password
-                    to keep your account secure and personalized.
-                  </p>
-                </div>
+      <div className="py-20 px-4">
+        <h2 className="text-3xl font-semibold text-center mb-10">Working & Key Features</h2>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+          {/* Left: Getting Started */}
+          <div className="space-y-8">
+            <h3 className="text-2xl font-medium text-gray-300">Getting Started is Simple</h3>
+            {[
+              {
+                title: "1. Sign Up",
+                desc: "Create your free account. Your thoughts stay encrypted and private, always.",
+              },
+              {
+                title: "2. Start Writing",
+                desc: "Capture emotions, thoughts, and milestones freely and revisit anytime.",
+              },
+              {
+                title: "3. Manage Profile",
+                desc: "Update your personal info and keep your profile secured."
+              },
+            ].map(({ title, desc }) => (
+              <div key={title} className="bg-[#1a1a1a] p-5 rounded-2xl shadow-inner border border-gray-800">
+                <h4 className="text-lg font-semibold mb-2">{title}</h4>
+                <p className="text-gray-400">{desc}</p>
               </div>
-            </div>
+            ))}
+          </div>
 
-            <div>
-              <h3 className="text-xl font-semibold text-center md:text-left">
-                Features Designed for You
-              </h3>
-              <div className="mt-6 space-y-6">
-                <div className="p-4 bg-base-100 shadow-lg rounded-lg">
-                  <h4 className="text-lg font-semibold">Daily Journaling</h4>
-                  <p className="text-gray-500">
-                    Develop a daily habit of writing and reflecting. The more
-                    you write, the more you understand yourself.
-                  </p>
-                </div>
-                <div className="p-4 bg-base-100 shadow-lg rounded-lg">
-                  <h4 className="text-lg font-semibold">Entry Management</h4>
-                  <p className="text-gray-500">
-                    Easily add, edit, and delete entries while keeping your
-                    thoughts organized. You can also set or change entry dates
-                    anytime.
-                  </p>
-                </div>
-                <div className="p-4 bg-base-100 shadow-lg rounded-lg">
-                  <h4 className="text-lg font-semibold">Secure & Private</h4>
-                  <p className="text-gray-500">
-                    Your entries are stored securely on the cloud, ensuring that
-                    no data is lost. Manage your profile details safely.
-                  </p>
-                </div>
+          {/* Right: Features */}
+          <div className="space-y-8">
+            <h3 className="text-2xl font-medium text-gray-300">Features Designed for You</h3>
+            {[
+              {
+                title: "Daily Journaling",
+                desc: "Build your habit with focused writing sessions and track emotional growth.",
+              },
+              {
+                title: "Entry Management",
+                desc: "Add, edit, or delete entries with ease. Total control, zero clutter.",
+              },
+              {
+                title: "Secure & Private",
+                desc: "Cloud-synced, encrypted, and yours only. Safety meets simplicity.",
+              },
+            ].map(({ title, desc }) => (
+              <div key={title} className="bg-[#1a1a1a] p-5 rounded-2xl shadow-inner border border-gray-800">
+                <h4 className="text-lg font-semibold mb-2">{title}</h4>
+                <p className="text-gray-400">{desc}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
