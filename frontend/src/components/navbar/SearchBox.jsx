@@ -32,12 +32,12 @@ const SearchBox = ({ toggle }) => {
         placeholder="Search entries..."
         autoComplete="off"
         aria-label="Search journal entries"
-        className="flex-grow px-4 py-2 rounded-l-full border border-stone-800 bg-[#1a1a1a] text-gray-100  transition"
+        className="flex-grow px-4 py-2 rounded-l-full border border-stone-800 bg-[#1a1a1a] text-gray-100 transition"
       />
       <button
         type="submit"
         aria-label="Submit search"
-        className="px-6 py-2 bg-[#242424] text-gray-100 rounded-r-full hover:bg-[#323232]  focus:ring-2 focus:ring-gray-600 transition"
+        className="px-6 py-2 bg-[#242424] text-gray-100 rounded-r-full hover:bg-[#323232] transition"
       >
         Search
       </button>
