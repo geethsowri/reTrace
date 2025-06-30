@@ -65,7 +65,7 @@ const NavProfile = () => {
 
         {dropdownOpen && (
           <ul
-            className="absolute right-0 mt-6 w-52 bg-[#242424] border border-gray-700 rounded-md shadow-lg z-50"
+            className="absolute right-0 mt-6 w-52 bg-[#242424] border border-[#323232] rounded-md shadow-lg z-50"
             role="menu"
             aria-label="User menu"
           >
