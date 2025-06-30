@@ -7,59 +7,48 @@ import logo from "../../assets/logo.svg";
 
 const Navbar = () => {
   return (
-    <nav className="w-full sticky top-0 z-10 bg-[#1a1a1a] text-stone-100 shadow-md flex items-center px-4 md:px-2 h-16">
-      
-      {/* Left: Hamburger + Logo */}
-      <div className="flex items-center gap-6 flex-shrink-0">
+    <div className="navbar bg-[#1a1a1a] w-full sticky top-0 z-10">
+      <div className="navbar-start">
         <div className="lg:hidden">
           <label
             htmlFor="my-drawer-3"
             aria-label="open sidebar"
-            className="p-2 rounded-md cursor-pointer hover:bg-[#1a1a1a] transition"
+            className="btn btn-square btn-ghost"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="h-6 w-6"
-              aria-hidden="true"
+              className="inline-block h-6 w-6 stroke-current"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h16M4 18h16"
-              />
+              ></path>
             </svg>
           </label>
         </div>
-
-        <Link
-          to="/"
-          className="flex items-center gap-2 text-xl font-semibold select-none"
-        >
-          <img src={logo} alt="reTrace logo" className="w-10 h-10" />
-          <span>reTrace</span>
+        <Link className="btn btn-ghost text-xl pl-0" to="/">
+          <img className="w-10 h-10" src={logo} alt="logo" />
+          reTrace
         </Link>
       </div>
 
-      {/* Center: Nav Links */}
-      <div className="flex-grow flex justify-center">
-        <ul className="flex gap-6 text-stone-100">
+      <div className="navbar-center hidden flex-none lg:block">
+        <ul className="menu menu-horizontal">
           <NavLinks />
         </ul>
       </div>
 
-      {/* Right: Search + Profile */}
-      <div className="flex items-center gap-4 flex-shrink-0">
-        <div className="hidden md:block">
+      <div className="navbar-end gap-2">
+        <div className="hidden md:flex">
           <SearchBox />
         </div>
         <NavProfile />
       </div>
-    </nav>
+    </div>
   );
 };
-
 export default Navbar;

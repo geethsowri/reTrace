@@ -75,7 +75,7 @@ const NavProfile = () => {
                   setOpenProfile(true);
                   setDropdownOpen(false);
                 }}
-                className="flex items-center gap-2 w-full px-4 py-2 text-gray-100 hover:bg-[#1a1a1a] focus:outline-none"
+                className="flex items-center gap-2 w-full px-4 py-2 text-gray-100 hover:bg-[#1a1a1a]"
                 role="menuitem"
               >
                 <CircleUserRound size={20} />
@@ -88,7 +88,7 @@ const NavProfile = () => {
                   setOpenPassword(true);
                   setDropdownOpen(false);
                 }}
-                className="flex items-center gap-2 w-full px-4 py-2 text-gray-100 hover:bg-[#1a1a1a] focus:outline-none"
+                className="flex items-center gap-2 w-full px-4 py-2 text-gray-100 hover:bg-[#1a1a1a]"
                 role="menuitem"
               >
                 <LockKeyhole size={20} />
@@ -101,7 +101,7 @@ const NavProfile = () => {
                   setOpenLogout(true);
                   setDropdownOpen(false);
                 }}
-                className="flex items-center gap-2 w-full px-4 py-2 text-red-500 hover:bg-red-900 focus:outline-none"
+                className="flex items-center gap-2 w-full px-4 py-2 text-red-500 hover:bg-red-900"
                 role="menuitem"
               >
                 <LogOut size={20} />
