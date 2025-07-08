@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import NavLinks from "./NavLinks";
-import ThemeController from "../ThemeController";
 import NavProfile from "./NavProfile";
 import SearchBox from "./SearchBox";
 import logo from "../../assets/logo.svg";
