@@ -38,3 +38,8 @@ jobs:
         run: |
           cd backend
           npm run lint
+          
+      - name: Run Tests (backend)
+        run: |
+          cd backend
+          npm test
