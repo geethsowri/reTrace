@@ -1,0 +1,40 @@
+name: CI - reTrace Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install deps (frontend)
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Lint (frontend)
+        run: |
+          cd frontend
+          npm run lint
+
+      - name: Install deps (backend)
+        run: |
+          cd backend
+          npm ci
+
+      - name: Lint (backend)
+        run: |
+          cd backend
+          npm run lint
