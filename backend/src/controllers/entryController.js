@@ -1,11 +1,12 @@
 const Entry = require("../models/entryModel");
 const validator = require("validator");
+const classifyMood = require("../utils/classifyMood");
 
 const createEntry = async (req, res) => {
-  const { date, mood, title, content } = req.body;
+  const { date, title, content } = req.body;
   const loggedUser = req.user;
 
-  if (!title || !content || !mood)
+  if (!title || !content)
     return res
       .status(422)
       .json({ message: "Please submit with required fields!" });
@@ -29,6 +30,13 @@ const createEntry = async (req, res) => {
   }
 
   try {
+    let mood = "🙂";
+    try {
+      mood = await classifyMood(content);
+    } catch (err) {
+      console.warn("Mood classification failed. Using default.", err.message);
+    }
+
     const saveEntry = await Entry.create({
       createdBy: loggedUser._id,
       date,
@@ -98,9 +106,9 @@ const getEntry = async (req, res) => {
 const updateEntry = async (req, res) => {
   const loggedUser = req.user;
   const entryId = req.params.id;
-  const { date, title, mood, content } = req.body;
+  const { date, title, content } = req.body;
 
-  if (!title || !content || !mood)
+  if (!title || !content)
     return res
       .status(422)
       .json({ message: "Please submit with required fields!" });
@@ -124,9 +132,20 @@ const updateEntry = async (req, res) => {
   }
 
   try {
+    // Auto-reclassify mood based on new content
+    let mood = "🙂";
+    try {
+      mood = await classifyMood(content);
+    } catch (err) {
+      console.warn(
+        "Mood re-classification failed. Using default.",
+        err.message
+      );
+    }
+
     const entry = await Entry.findOneAndUpdate(
       { _id: entryId, createdBy: loggedUser._id },
-      { date, title, mood, content },
+      { date, title, content, mood },
       { new: true, runValidators: true }
     );
 
